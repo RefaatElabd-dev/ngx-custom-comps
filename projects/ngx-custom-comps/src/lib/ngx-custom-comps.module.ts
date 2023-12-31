@@ -11,7 +11,6 @@ import { NgxCustomCompsRoutingModule } from './ngx-custom-comps-routing.module';
     NgxCustomCompsComponent,
   ],
   imports: [
-    RouterModule,
     CommonModule,
     NgxCustomCompsRoutingModule,
   ],

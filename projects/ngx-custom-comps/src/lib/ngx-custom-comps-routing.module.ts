@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 
 import { NgxCustomCompsComponent } from "./ngx-custom-comps.component";
 
@@ -11,7 +11,7 @@ const libRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(libRoutes, { preloadingStrategy: PreloadAllModules})],
+    imports: [RouterModule.forChild(libRoutes)],
     exports: [RouterModule]
 })
 export class NgxCustomCompsRoutingModule {
