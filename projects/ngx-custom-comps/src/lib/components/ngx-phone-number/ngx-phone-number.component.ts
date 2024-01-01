@@ -13,13 +13,14 @@ import { v4 } from 'uuid';
         }  
     ]
   })
-  export class PhoneNumberComponent implements OnInit, ControlValueAccessor {
+  export class PhoneNumberComponent implements ControlValueAccessor {
     ///#region props
     @Input() required: boolean = false;
+    @Input() appearAsterisk: boolean = false;
     @Input() id: string;
     @Input() name: string;
     @Input() pattern :string| null = null;
-    @Input() displayName: string = 'phone';
+    @Input() displayName: string = 'Phone';
     @Input() readonly: boolean = false;
     @Input() customStyleClass: string = ''
 
@@ -57,11 +58,10 @@ import { v4 } from 'uuid';
     ///region Implemented methods
     writeValue(value: string): void {
         this.value = value;
-        console.log(value)
     }
 
     registerOnChange(onChange: any): void {
-       console.log(onChange)
+       this.onChange = onChange
     }
 
     registerOnTouched(onTouch: any): void {
@@ -71,12 +71,7 @@ import { v4 } from 'uuid';
     setDisabledState?(isDisabled: boolean): void {
         this.disabled = this.disabled
     }
-    ngOnInit(): void {
-        
-    }
-    ngOnChanges(change: SimpleChange){
-        console.log(change)
-    }
+
     ///# end region
 
     ///#region internel Methods & events

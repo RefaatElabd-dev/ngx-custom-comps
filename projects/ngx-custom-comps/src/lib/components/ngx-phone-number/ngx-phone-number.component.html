@@ -1,3 +1,4 @@
-<label [for]="id">{{ displayName }}</label>
+<label [for]="id">{{ displayName }} <span class="text-danger" *ngIf="appearAsterisk">*</span></label>
+<br>
 <input type="tel" [id]="id" [name]="name" [required]="required" [ngClass]="customStyleClass" [(ngModel)]="value"
        (input)="internelOnChange($event)" (blur)="onBluer($event)" [disabled]="disabled"/>
