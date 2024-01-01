@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { PhoneNumberComponent } from "./components/ngx-phone-number/ngx-phone-number.component";
 
-import { NgxCustomCompsComponent } from "./ngx-custom-comps.component";
 
 const libRoutes: Routes = [
     {
-        path: '',
-        component: NgxCustomCompsComponent
+        path: 'phone',
+        component: PhoneNumberComponent
     }
 ];
 

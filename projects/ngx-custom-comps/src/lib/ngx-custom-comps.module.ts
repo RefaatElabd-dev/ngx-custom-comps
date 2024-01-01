@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NgxCustomCompsComponent } from './ngx-custom-comps.component';
 import { NgxCustomCompsRoutingModule } from './ngx-custom-comps-routing.module';
+import { PhoneNumberComponent } from './components/ngx-phone-number/ngx-phone-number.component';
+import { FormsModule } from '@angular/forms';
 
 
+export const commonComponents = [
+  PhoneNumberComponent,
+];
 
 @NgModule({
-  declarations: [
-    NgxCustomCompsComponent,
-  ],
   imports: [
     CommonModule,
+    FormsModule,
     NgxCustomCompsRoutingModule,
   ],
-  exports: [
-    NgxCustomCompsComponent,
-  ]
+  declarations: [...commonComponents,],
+  exports: [...commonComponents,]
 })
 export class NgxCustomCompsModule { }
