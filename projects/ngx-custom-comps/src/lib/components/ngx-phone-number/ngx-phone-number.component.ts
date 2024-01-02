@@ -19,14 +19,15 @@ import { v4 } from 'uuid';
     @Input() appearAsterisk: boolean = false;
     @Input() id: string;
     @Input() name: string;
-    @Input() pattern :string| null = null;
+    @Input() pattern :string = '';
     @Input() displayName: string = 'Phone';
-    @Input() readonly: boolean = false;
+    @Input() readOnly: boolean = false;
     @Input() customStyleClass: string = ''
+    @Input() maxLength: number = Number.MAX_VALUE
 
     val = "" // this is the updated value that the class accesses
     //get accessor
-    get value(): any {
+    get value(): string {
 
         if(this.val){
             return this.val.trim();
@@ -42,6 +43,8 @@ import { v4 } from 'uuid';
         this.onTouch(val)
     }
 
+    readOnlyValue: string = '';
+
     disabled: boolean = false;
 
     onChange: any = (value: string) => {}
@@ -56,8 +59,14 @@ import { v4 } from 'uuid';
     ///# end region
 
     ///region Implemented methods
+
+    ngOnInit() {
+        this.readOnlyValue = this.value?.match(/.{1,3}/g)?.join('-') ?? this.value ?? '__';
+    }
+
     writeValue(value: string): void {
         this.value = value;
+        this.readOnlyValue = this.value?.match(/.{1,3}/g)?.join('-') ?? this.value ?? '__';
     }
 
     registerOnChange(onChange: any): void {
