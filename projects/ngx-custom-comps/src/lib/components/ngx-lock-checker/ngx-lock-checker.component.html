@@ -1,0 +1,7 @@
+<div>
+    <label class="lock-checkbox">
+        <input class="lock-checker" type="checkbox"  (input)="onChange(value)" (blur)="onTouch()" [(ngModel)]="value" />
+        <span class="checkmark"></span>
+        <label *ngIf="displayName">{{displayName}}</label>
+    </label>
+</div>

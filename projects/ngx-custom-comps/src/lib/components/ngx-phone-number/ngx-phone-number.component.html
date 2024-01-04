@@ -1,10 +1,12 @@
-<label [for]="id">{{ displayName }} <span class="text-danger" *ngIf="appearAsterisk">*</span></label>
-<br>
-<input *ngIf="!readOnly" [pattern]="pattern" [maxlength]="maxLength"
-       type="tel" [id]="id" [name]="name" [required]="required" [ngClass]="customStyleClass" [(ngModel)]="value"
-       (input)="internelOnChange($event)" (blur)="onBluer($event)" [disabled]="disabled"
-       style="width: 90%; margin: 4px; padding: 8px; border-radius: 4px;"/>
+<div>
+       <label [for]="id">{{ displayName }} <span class="text-danger" *ngIf="appearAsterisk">*</span></label>
+       <br>
+       <input *ngIf="!readOnly" [pattern]="pattern" [maxlength]="maxLength"
+              type="tel" [id]="id" [name]="name" [required]="required" [ngClass]="customStyleClass" [(ngModel)]="value"
+              (input)="internelOnChange($event)" (blur)="onBluer($event)" [disabled]="disabled"
+              style="width: 90%; margin: 4px; padding: 8px; border-radius: 4px;"/>
 
-<p *ngIf="readOnly" [ngClass]="customStyleClass" [title]="value" style="width: 90%;background-color: rgb(203, 202, 202); margin: 4px; padding: 8px; border: 1px solid rgb(82, 80, 80); border-radius: 4px;">
-       {{readOnlyValue}}
-</p>
+       <p *ngIf="readOnly" [ngClass]="customStyleClass" [title]="value" style="width: 90%;background-color: rgb(203, 202, 202); margin: 4px; padding: 8px; border: 1px solid rgb(82, 80, 80); border-radius: 4px;">
+              {{readOnlyValue}}
+       </p> 
+</div>
