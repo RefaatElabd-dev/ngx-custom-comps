@@ -1,7 +1,25 @@
-<div>
-    <label class="lock-checkbox">
-        <input class="lock-checker" type="checkbox"  (input)="onChange(value)" (blur)="onTouch()" [(ngModel)]="value" />
-        <span class="checkmark"></span>
-        <label *ngIf="displayName">{{displayName}}</label>
-    </label>
-</div>
+<container-element [ngSwitch]="checkType">
+    <div *ngSwitchCase="1">
+        <div class="checkbox-wrapper-42">
+            <input id="cbx-42" type="checkbox" (input)="onChange(value)" (blur)="onTouch()" [(ngModel)]="value" />
+            <label class="cbx" for="cbx-42"></label>
+            <label class="lbl" for="cbx-42">{{displayName}}</label>
+        </div>
+    </div>
+    <div *ngSwitchCase="2">
+        <div class="checkbox-wrapper-59">
+            <label class="switch">
+              <input type="checkbox" (input)="onChange(value)" (blur)="onTouch()" [(ngModel)]="value">
+              <span class="slider"></span>
+            </label>
+            <!-- <label>{{displayName}}</label> -->
+          </div>
+    </div>
+    <div *ngSwitchDefault>
+        <div class="checkbox-wrapper-42">
+            <input id="cbx-42" type="checkbox" (input)="onChange(value)" (blur)="onTouch()" [(ngModel)]="value" />
+            <label class="cbx" for="cbx-42"></label>
+            <label class="lbl" for="cbx-42">{{displayName}}</label>
+        </div>
+    </div>
+  </container-element>
