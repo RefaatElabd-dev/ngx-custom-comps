@@ -1,7 +1,20 @@
 <fieldset [formGroup]="form">
     <legend> {{ legend }}</legend>
-    <input class="w-100" type="text" placeholder="Address Line 1" formControlName="addressLine1" (blur)="onTouched()"/>
-    <input class="w-100" type="text" placeholder="Address Line 2" formControlName="addressLine2" (blur)="onTouched()" />
-    <input class="w-100" type="text" placeholder="zib Code" formControlName="zibCode" (blur)="onTouched()"/>
-    <input class="w-100" type="text" placeholder="City" formControlName="city" (blur)="onTouched()"/>
+    <div>
+        <input class="w-100" type="text" placeholder="Address Line 1" formControlName="addressLine1" (blur)="onTouched()"/>
+    </div>
+    <div>
+        <input class="w-100" type="text" placeholder="Address Line 2" formControlName="addressLine2" (blur)="onTouched()" />
+    </div>
+    <div>
+        <input class="w-100" type="text" placeholder="zib Code" formControlName="zibCode" (blur)="onTouched()"/>
+    </div>
+    <div>
+        <input class="w-100" type="text" placeholder="City" formControlName="city" (blur)="onTouched()"/>
+    </div>
+    <div>
+        {{form.value | json}}
+        {{form.valid | json}}
+        
+    </div>
 </fieldset>

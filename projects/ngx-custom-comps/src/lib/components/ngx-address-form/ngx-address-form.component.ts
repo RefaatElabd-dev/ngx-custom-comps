@@ -1,8 +1,9 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnDestroy } from "@angular/core";
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from "@angular/forms";
+import { Subscription } from "rxjs";
 
 @Component({
-    selector: 'ngx-address',
+    selector: 'lib-address-form',
     templateUrl: 'ngx-address-form.component.html',
     providers: [
         {
@@ -12,10 +13,11 @@ import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Valida
         },
     ]
 })
-export class NGXAddressFormComponent implements ControlValueAccessor
+export class NGXAddressFormComponent implements ControlValueAccessor, OnDestroy
 {
     @Input() legend: string = ''
 
+    onchangeSub: Subscription = new Subscription();
     onTouched = ( ) => {}
 
     form: FormGroup = this.fb.group({
@@ -29,7 +31,6 @@ export class NGXAddressFormComponent implements ControlValueAccessor
         
     }
 
-
     writeValue(val: any): void {
         if(val) {
             this.form.setValue(val)
@@ -37,7 +38,7 @@ export class NGXAddressFormComponent implements ControlValueAccessor
     }
 
     registerOnChange(onChange: any): void {
-        this.form.valueChanges.subscribe( value => onChange())
+        this.onchangeSub = this.form.valueChanges.subscribe(onChange)
     }
 
     registerOnTouched(onTouchedFn: any): void {
@@ -51,6 +52,10 @@ export class NGXAddressFormComponent implements ControlValueAccessor
         else {
             this.form.enable()
         }
-        
     }
+
+    ngOnDestroy(): void {
+        this.onchangeSub.unsubscribe();
+    }
+
 }
